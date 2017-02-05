@@ -1,0 +1,73 @@
+#add{
+  min-height: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  #map{
+    margin-top: 20px;
+    height: 350px;
+    width: 100%;
+  }
+  #MyLocation{
+    position: absolute;
+    top: 20px;
+    background-color: $common-blue-color;
+    color: white;
+    border: none;
+    border-radius: 0;
+    padding: 10px 20px;
+    transition: all .3s ease;
+    &:focus{
+      border: none;
+    }
+    &:hover{
+      background-color: darken($common-blue-color, 5%);
+    }
+  }
+  .input-group-addon{
+    height: 40px;
+    font-size: 13px;
+    background: none;
+    border-radius: 0;
+  }
+  input{
+    border-radius: 0;
+    height: 40px;
+    &:focus{
+      border: 1px solid $main-bg-color;
+      box-shadow: none;
+    }
+  }
+  select{
+    border-radius: 0;
+    height: 40px;
+    &:focus{
+      border: 1px solid $main-bg-color;
+      box-shadow: none;
+    }
+  }
+  select[name='operator-numbers']{
+    height: 26px;
+  }
+  input[type='submit']{
+    margin-top: 23px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 25px;
+    background-color: $common-blue-color;
+    color: white;
+    transition: all .3s ease;
+    &:hover{
+      background-color: darken($common-blue-color, 10%);
+    }
+  }
+  textarea{
+    height: 118px;
+    border-radius: 0;
+    &:focus{
+      border: 1px solid $main-bg-color;
+      box-shadow: none;
+    }
+  }
+
+}

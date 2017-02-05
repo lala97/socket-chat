@@ -1,0 +1,96 @@
+#map{
+  width: 100%;
+  position: relative;
+  #searchBoxDrag{
+    top:30%;
+    left: 2%;
+    width: 230px;
+    height: 175px;
+    background-color:rgba(52,73,94,0.9);
+    z-index: 999;
+    position: absolute;
+    color: #efefef;
+    cursor: move;
+     form{
+       height: 100%;
+     }
+    ul{
+        clear: both;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        // padding-left: 25px;
+        li{
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            &:first-child{
+
+              margin-bottom: 15px;
+            }
+            label{
+              margin-right: auto;
+            }
+            // padding-top: 17px;
+            select{
+                border:0px;
+                width: 180px;
+                height: 35px;
+                color: grey;
+            }
+            label{
+                // margin-bottom: 0px;
+            }
+        }
+    }
+    .search-error-desc{
+      height: 48px;
+      width: 100%;
+      background: #d26260;
+      display: none;
+      opacity: 0.9;
+      .infoMessage{
+        padding: 15px;
+      }
+    }
+
+    p{
+        // padding: 10px;
+        clear: both;
+    }
+}
+// Map-da Load gorunmesi
+.openLoad{
+  width: 60px;
+  position: absolute;
+  top: 209px;
+  z-index: 2;
+  left: 655px;
+  }
+  .closeLoad{
+    display: none;
+  }
+// Map Infowindow
+.infow-content img {
+	float: left;
+  margin: 0px;
+  margin-right: 10px;
+}
+.infow-title {
+	font-size: 16px;
+	font-weight: 700;
+  padding: 0px;
+}
+.InfoMap p{
+    padding-right: 7px;
+    padding-top: 5px;
+    text-align: justify;
+  }
+}

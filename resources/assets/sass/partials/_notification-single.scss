@@ -1,0 +1,42 @@
+#notification-single{
+  padding-top: 50px;
+  min-height: 100%;
+  img{
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+  .not-single-title{
+    font-weight: 700;
+  }
+  .not-single-desc{
+    margin-top: 20px;
+    word-break: break-all;
+  }
+  .not-accept{
+    background-color: $succes-color;
+    color: white;
+    border-radius: 0;
+    border: none;
+    padding: 10px 25px;
+    margin-right: 10px;
+    transition: all .3s ease;
+    &:hover{
+      background-color: darken($succes-color, 5%);
+    }
+  }
+
+  .not-deny{
+    background-color: $danger-color;
+    color: white;
+    border-radius: 0;
+    border: none;
+    padding: 10px 25px;
+    margin-right: 30px;
+    transition: all .3s ease;
+    &:hover{
+      background-color: darken($danger-color, 5%);
+    }
+  }
+}

@@ -1,0 +1,45 @@
+#contact-us{
+  padding-top: 50px;
+  min-height: 100%;
+  .contact-us-form{
+    input{
+      height: 40px;
+      border-radius: 0;
+      &:focus{
+        border: 1px solid $main-bg-color;
+        box-shadow: none;
+      }
+    }
+    input[type='submit']{
+      color: white;
+      background-color: $common-blue-color;
+      transition: all .3s ease;
+      padding-left: 10px;
+      padding-right: 10px;
+      &:hover{
+        background-color: darken($common-blue-color, 5%);
+      }
+    }
+    textarea{
+      border-radius: 0;
+      &:focus{
+        border: 1px solid $main-bg-color;
+        box-shadow: none;
+      }
+    }
+  }
+  .about-us-social-block{
+    margin-bottom: 45px;
+    &:first-child{
+      margin-top: 23px;
+    }
+    a{
+      text-decoration: none;
+      color: $text-color;
+      transition: all .3s ease;
+      &:hover{
+        color: $main-bg-color;
+      }
+    }
+  }
+}

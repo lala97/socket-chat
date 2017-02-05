@@ -1,0 +1,115 @@
+#single{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  .single-img{
+    margin-bottom: 30px;
+    .single-img-deadline{
+      position: absolute;
+      top: 10px;
+      color: white;
+      background-color: $warning-color;
+      font-size: 14px;
+      padding: 5px 20px 5px 20px;
+      i{
+        padding-right: 5px;
+      }
+    }
+    .single-img-location{
+      position: absolute;
+      top: 371px;
+      color: white;
+      background-color: $common-blue-color;
+      font-size: 14px;
+      padding: 5px 20px 5px 20px;
+      i{
+        padding-right: 5px;
+      }
+    }
+    img{
+      height: 400px;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  .single-social{
+    .single-social-facebook{
+      background-color: #3B5998;
+      margin-right: 10px;
+      padding: 10px 0;
+
+      a{
+        color: white;
+        padding: 10px 40px;
+        font-size: 16px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all .3s ease;
+        &:hover{
+          background-color: #324b81;
+        }
+      }
+      i{
+        padding-right: 10px;
+        font-size: 18px;
+      }
+    }
+    .single-social-google{
+      background-color: #DD4B39;
+      color: white;
+      padding: 10px 0;
+      a{
+        color: white;
+        padding: 10px 40px;
+        font-size: 16px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all .3s ease;
+        &:hover{
+          background-color: #c43421;
+        }
+      }
+      i{
+        padding-right: 5px;
+      }
+    }
+  }
+  .single-content{
+    padding-top: 30px;
+    font-size: 15px;
+  }
+  .single-support{
+    margin-top: 30px;
+
+    a{
+      text-decoration: none;
+      color: white;
+      background-color: $istek-color;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 0;
+      i{
+        padding-right: 5px;
+      }
+    }
+  }
+  .destek-ol-message{
+    border-radius: 0;
+    border: none;
+    textarea{
+      border-radius: 0;
+      &:focus{
+        box-shadow: none;
+        border: 1px solid $succes-color;
+      }
+    }
+    input[name="send"]{
+      color: white;
+      background-color: $common-blue-color;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 0;
+      border: none;
+    }
+  }
+}

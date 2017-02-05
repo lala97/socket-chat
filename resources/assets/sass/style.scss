@@ -1,0 +1,37 @@
+@import "vendor/bootstrap";
+@import "vendor/font-awesome";
+@import "partials/font";
+@import "variables";
+@import "common-classes";
+
+@import "partials/contact-us";
+@import "partials/map";
+@import "partials/news";
+@import "partials/single";
+@import "partials/breadcrumb";
+@import "partials/about-us";
+@import "partials/profil";
+@import "partials/register";
+@import "partials/contact";
+@import "partials/navbar";
+@import "partials/footer";
+@import "partials/add";
+@import "partials/css-popup";
+@import "partials/notification-single";
+@import "partials/password-reset";
+
+@import "media-queries";
+
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  font-family: 'Roboto Condensed';
+  font-size: 13px;
+  color: $text-color;
+}
+::selection{
+  background-color: $main-bg-color;
+  color: white;
+}
