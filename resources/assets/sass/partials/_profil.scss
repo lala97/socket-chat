@@ -1,0 +1,380 @@
+#breadcrumb{
+  h1{
+    margin-left:2.2%;
+  }
+  .nav-tabs{
+    background-color: $main-bg-color;
+    border: none;
+    a{
+      color: white;
+      border-radius: 0;
+      border: none;
+      margin-right: 0;
+      font-size: 15px;
+      &:hover{
+        background: #475E6C;
+        border-radius: 0
+      }
+    }
+    li{
+      margin-bottom: 0;
+      &.active{
+        a{
+          background: #475E6C;
+        }
+      }
+    }
+  }
+}
+
+#profil{
+    min-height: 100%;
+    word-break: break-all;
+    .tab-content{
+      margin-top: 25px;
+      h2{
+        display: inline-block;
+        margin-bottom: 0;
+      }
+      i{
+        width: 30px;
+      }
+      #profil-view{
+        i.fa-pencil-square-o{
+          color: $main-bg-color;
+          transition: all .3s ease;
+          &:hover{
+            color: $istek-color;
+          }
+        }
+      }
+      p{
+        font-size: 17px;
+      }
+      .profil-avatar{
+        img{
+          border-radius: 100%;
+          object-fit: cover;
+          height: 210px;
+          width: 210px;
+        }
+      }
+    }
+    #profil-isteklerim{
+      font-size: 13px;
+      .profil-isteklerim-status{
+        i.fa-check-circle-o{
+          color: $succes-color;
+        }
+        i.fa-times-circle-o{
+          color: $danger-color;
+        }
+        i.fa-clock-o{
+          color: $warning-color;
+        }
+      }
+      .profil-isteklerim-photo{
+        img{
+          height: 50px;
+        }
+      }
+      .profil-isteklerim-subText{
+        width:200px;
+      }
+      .profil-isteklerim-action{
+        a.action-edit{
+          text-decoration: none;
+          background-color: $warning-color;
+          color: white;
+          padding: 2px;
+          margin-right: 3px;
+          &:hover{
+            background-color: darken($warning-color, 10%);
+          }
+        }
+
+        a.action-delete{
+          text-decoration: none;
+          background-color: $danger-color;
+          color: white;
+          padding: 2px;
+          &:hover{
+            background-color: darken($danger-color, 10%);
+          }
+        }
+      }
+      .modal-content{
+        margin-top: 254px;
+      }
+    }
+    #profil-desteklerim{
+      font-size: 13px;
+      .profil-desteklerim-status{
+        i.fa-check-circle-o{
+          color: $succes-color;
+        }
+        i.fa-times-circle-o{
+          color: $danger-color;
+        }
+        i.fa-clock-o{
+          color: $warning-color;
+        }
+      }
+      .profil-desteklerim-photo{
+        img{
+          height: 50px;
+        }
+      }
+      .profil-desteklerim-subText{
+        width: 200px;
+      }
+      .profil-desteklerim-action{
+        a.action-edit{
+          text-decoration: none;
+          background-color: $warning-color;
+          color: white;
+          padding: 2px;
+          margin-right: 3px;
+          &:hover{
+            background-color: darken($warning-color, 10%);
+          }
+        }
+
+        a.action-delete{
+          text-decoration: none;
+          background-color: $danger-color;
+          color: white;
+          padding: 2px;
+          &:hover{
+            background-color: darken($danger-color, 10%);
+          }
+        }
+      }
+      .modal-content{
+        margin-top: 254px;
+      }
+    }
+    #profil-notification{
+      .notification-block{
+        margin-bottom: 20px;
+        border-bottom: 1px solid $contact-text-color;
+        transition: all .3s ease;
+        .notification-block-href{
+          color: $text-color;
+          text-decoration: none;
+          &:hover{
+            background-color: #475e6c;
+          }
+          img{
+            margin-bottom: 10px;
+            margin-top: 10px;
+          }
+          .profil-notification-title{
+            margin-top: 10px;
+            font-weight: 700;
+          }
+        }
+      }
+      img{
+        height: 100px;
+        width: 100px;
+        object-fit: cover;
+        border-radius: 100%;
+      }
+      .profil-notification-full{
+        a{
+          background-color: $common-blue-color;
+          text-decoration: none;
+          color: white;
+          transition: all .3s ease;
+          border-radius: 0;
+          &:hover{
+            background-color: darken($common-blue-color, 5%);
+          }
+        }
+      }
+    }
+    #profil-ismariclar{
+      .notification-block{
+        margin-bottom: 10px;
+        border-bottom: 1px solid $contact-text-color;
+        transition: all .3s ease;
+        .notification-block-href{
+          color: $text-color;
+          text-decoration: none;
+          &:hover{
+            background-color: #475e6c;
+          }
+          img{
+            margin-bottom: 10px;
+            margin-top: 10px;
+          }
+          .profil-notification-title{
+            margin-top: 10px;
+            font-weight: 700;
+          }
+        }
+      }
+      img{
+        height: 100px;
+        width: 100px;
+        object-fit: cover;
+        border-radius: 100%;
+      }
+      .profil-notification-full{
+        a{
+          background-color: $common-blue-color;
+          text-decoration: none;
+          color: white;
+          transition: all .3s ease;
+          border-radius: 0;
+          &:hover{
+            background-color: darken($common-blue-color, 5%);
+          }
+        }
+      }
+    }
+    #profil-settings{
+      p{
+        font-size: 17px;
+      }
+      .input-group-addon{
+        border-radius: 0;
+      }
+
+      input[type='text'], input[type='file'] , .forImg , select#CitySelectOption{
+        border-radius: 0;
+        height: 40px;
+        &:focus{
+          border: 1px solid $main-bg-color;
+          box-shadow: none;
+        }
+      }
+      .forImg{
+        line-height: 25px;
+      }
+      input[type='submit']{
+        height: 40px;
+        border: none;
+        border-radius: 0;
+        padding-left: 30px;
+        padding-right: 30px;
+        background-color: $common-blue-color;
+        color: white;
+        transition: all .3s ease;
+        &:hover{
+          background-color: darken($common-blue-color, 10%);
+        }
+      }
+      .profil-avatar{
+        img{
+          border-radius: 100%;
+          object-fit: cover;
+          height: 210px;
+          width: 210px;
+        }
+    }
+  }
+  #profil-done-desteks{
+  font-size: 13px;
+  .profil-desteklerim-status{
+    i.fa-check-circle-o{
+      color: $succes-color;
+    }
+    i.fa-times-circle-o{
+      color: $danger-color;
+    }
+    i.fa-clock-o{
+      color: $warning-color;
+    }
+  }
+  .profil-desteklerim-photo{
+    img{
+      height: 50px;
+    }
+  }
+  .profil-desteklerim-action{
+    a.action-edit{
+      text-decoration: none;
+      background-color: $warning-color;
+      color: white;
+      padding: 2px;
+      margin-right: 3px;
+      &:hover{
+        background-color: darken($warning-color, 10%);
+      }
+    }
+
+    a.action-delete{
+      text-decoration: none;
+      background-color: $danger-color;
+      color: white;
+      padding: 2px;
+      &:hover{
+        background-color: darken($danger-color, 10%);
+      }
+    }
+    a.action-accept{
+      text-decoration: none;
+      background-color: $succes-color;
+      color: white;
+      padding: 2px;
+      margin-right: 10px;
+      &:hover{
+        background-color: darken($succes-color, 10%);
+      }
+    }
+  }
+}
+#profil-recieved-desteks{
+  font-size: 13px;
+  .profil-desteklerim-status{
+    i.fa-check-circle-o{
+      color: $succes-color;
+    }
+    i.fa-times-circle-o{
+      color: $danger-color;
+    }
+    i.fa-clock-o{
+      color: $warning-color;
+    }
+  }
+  .profil-desteklerim-photo{
+    img{
+      height: 50px;
+    }
+  }
+  .profil-desteklerim-action{
+    a.action-edit{
+      text-decoration: none;
+      background-color: $warning-color;
+      color: white;
+      padding: 2px;
+      margin-right: 3px;
+      &:hover{
+        background-color: darken($warning-color, 10%);
+      }
+    }
+
+    a.action-delete{
+      text-decoration: none;
+      background-color: $danger-color;
+      color: white;
+      padding: 2px;
+      &:hover{
+        background-color: darken($danger-color, 10%);
+      }
+    }
+    a.action-accept{
+      text-decoration: none;
+      background-color: $succes-color;
+      color: white;
+      padding: 2px;
+      margin-right: 10px;
+      &:hover{
+        background-color: darken($succes-color, 10%);
+      }
+    }
+  }
+}
+}

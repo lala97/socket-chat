@@ -1,0 +1,134 @@
+.padding0{
+  padding: 0 !important
+}
+
+.margin0{
+  margin: 0 !important;
+}
+
+.clear-fix{
+  clear: both !important;
+}
+
+.register-color{
+    color: $common-blue-color !important;
+    text-decoration: none !important;
+}
+.forImg{
+  border-radius: 0;
+  height: 40px;
+  line-height: 25px;
+  background: $main-bg-color;
+  color: white;
+  transition: all .3s ease;
+  &:focus{
+    border: 1px solid $main-bg-color;
+    box-shadow: none;
+  }
+  &:hover{
+    background-color: darken($main-bg-color, 5%);
+    color: white;
+  }
+}
+span.special-istek{
+  font-weight: 700 !important;
+  color: $istek-color !important;
+}
+
+span.special-destek{
+  font-weight: 700 !important;
+  color: $destek-color !important;
+}
+.infoBubble-button{
+  background-color: $common-blue-color;
+  border: none;
+  border-radius: 0px;
+  font-size: 13px;
+  color: white;
+  text-decoration: none;
+  transition: all .3s ease;
+  padding: 2px 12px;
+  &:hover{
+    background-color: darken($common-blue-color, 5%);
+    color: white;
+  }
+}
+.infoBubble-desc{
+  height: 90px;
+}
+.InfoBubble-close{
+  width: 20px;
+  top: -20px !important;
+  right: 0px !important;
+}
+
+form img{
+  width: 60px;
+  height: 60px;
+  margin-left: 5px;
+  float: left
+}
+form span{
+  color:red;
+  cursor: pointer;
+}
+
+.img-wrap {
+  display:inline-block;
+  position: relative;
+  /*margin-top: 20px;*/
+  float: left;
+}
+.img-wrap .closeImage {
+  color:red;
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  z-index: 100;
+  opacity:1 !important;
+  font-size: 20px !important;
+}
+
+// #myModal{
+
+  .modalsss {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  // }
+
+  /* Modal Content */
+  .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 20%;
+  }
+
+  /* The Close Button */
+  .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+  }
+
+  .close:hover, .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+  }
+}
+
+#inputNumber{
+  z-index: 0;
+}

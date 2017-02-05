@@ -1,0 +1,120 @@
+#news{
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  .news-block{
+    height: 268px;
+    word-break: break-all;
+    padding-right: 0px !important;
+    transition: all .3s ease;
+  }
+
+  .news-block:hover{
+    background-color: #f2f2f2;
+  }
+
+  .news-content{
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+    transition: all .3s ease;
+    height: 68px;
+  }
+
+  .news-block .news-image img{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    transition: all .3s ease;
+
+  }
+
+  .news-block .news-image .news-type{
+    position: absolute;
+    top: 10px;
+    color: white;
+    font-size: 14px;
+    padding: 5px 20px 5px 20px;
+  }
+
+  .news-block .news-image .news-istek{
+    background-color: $istek-color;
+    font-weight: 700;
+  }
+
+  .news-block .news-image .news-destek{
+    background-color: $destek-color;
+    font-weight: 700;
+  }
+
+  .news-block .news-content .news-title {
+    padding: 10px 20px 2px;
+  }
+  .news-block .news-content .news-title a{
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    color: $text-color;
+  }
+  .news-block .news-content .news-location{
+    padding: 5px 20px 0;
+  }
+  .news-block .news-content .news-location p{
+    font-size: 12px;
+  }
+
+  .news-block .news-content .news-stats{
+    padding: 0 20px 2px;
+  }
+
+  .news-block .news-content .news-stats ul li{
+    font-size: 12px;
+  }
+
+  .thumbnail{
+    border: none !important;
+    border-radius: 0 !important;
+    padding-right: 10px !important;
+
+  }
+
+  .news-type-title{
+    padding-left: 0px;
+    padding-right: 10px;
+    h1{
+      font-weight: 700;
+      margin-bottom: -20px;
+    }
+  }
+
+  .news-all-isteks-button{
+    padding-right: 10px;
+    a{
+      background-color: $istek-color;
+      color: white;
+      border:none;
+      border-radius: 0;
+      transition: all .3s ease;
+      &:hover{
+        background-color: darken($istek-color, 5%);
+      }
+    }
+    i{
+      padding-left: 5px;
+    }
+  }
+  .news-all-desteks-button{
+    padding-right: 10px;
+    a{
+      background-color: $destek-color;
+      color: white;
+      border:none;
+      border-radius: 0;
+      transition: all .3s ease;
+      &:hover{
+        background-color: darken($destek-color, 5%);
+      }
+    }
+    i{
+      padding-left: 5px;
+    }
+  }
+}

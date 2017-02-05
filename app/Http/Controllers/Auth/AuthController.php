@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+use Illuminate\Http\Request; //verification
+use App\ActivationService; //verification
+
 class AuthController extends Controller
 {
     /*
@@ -28,6 +31,10 @@ class AuthController extends Controller
      *
      * @var string
      */
+
+    protected $activationService;//verification
+
+
     protected $redirectTo = '/';
 
     /**
@@ -35,10 +42,22 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
-    }
+     //===========================START===============================
+     // /login ve /register yazanda get  methodu ile error vermemesi ucun route yonlendirmeleleri...
+     public function showLoginForm()
+     {
+       return back();
+     }
+     public function showRegistrationForm()
+     {
+       return redirect('/Qeydiyyat');
+     }
+     //==========================END=====================================
+     public function __construct(ActivationService $activationService)
+       {
+           $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+           $this->activationService = $activationService;
+       }
 
     /**
      * Get a validator for an incoming registration request.
@@ -49,9 +68,13 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+          'username' => 'required|unique:users',
+          'city' => 'required',
+          'name' => 'required|max:255',
+          'phone' => 'required|max:13',
+          'email' => 'required|email|max:255|unique:users',
+          'password' => 'required|min:6|confirmed',
+          'password_confirmation' => 'required|min:6|',
         ]);
     }
 
@@ -64,9 +87,51 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+          'username' => $data['username'],
+          'name' => $data['name'],
+          'phone' => '+994'.$data['operator'].$data['phone'],
+          'city' => $data['city'],
+          'email' => $data['email'],
+          'avatar' => 'prof.png',
+          'password' => bcrypt($data['password'])
         ]);
+    }
+
+    public function register(Request $request)
+    {
+
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $user = $this->create($request->all());
+
+        $this->activationService->sendActivationMail($user);
+
+        return redirect('/Qeydiyyat')->with('status', 'Biz sizə aktivasiya linki yolladıq. Zəhmət olmasa Email adresinizi yoxlayın');
+    }
+
+    public function authenticated(Request $request, $user)
+    {
+        if (!$user->activated) {
+            $this->activationService->sendActivationMail($user);
+            auth()->logout();
+            return back()->with('warning',"Aktivasiya linki emailinizə göndərildi. Hesabınızı aktivləşdirdikdən sonra giriş edə bilərsiniz.");
+        }
+        return redirect()->intended($this->redirectPath());
+    }
+
+
+    public function activateUser($token)
+    {
+        if ($user = $this->activationService->activateUser($token)) {
+            auth()->login($user);
+            return redirect($this->redirectPath());
+        }
+        abort(404);
     }
 }

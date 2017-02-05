@@ -1,0 +1,121 @@
+@media only screen and (max-width: 462px)  {
+  .contact-social{
+    display: none;
+    li:last-child{
+      display: none;
+    }
+    li:nth-child(3){
+      border-right: 1px solid #535D63;
+    }
+  }
+}
+@media only screen and (max-width: 600px)  {
+  i.fa-pencil-square-o{
+    position: absolute;
+    top: 0;
+  }
+ .profil-phone, .profil-email, .profil-address{
+    white-space: nowrap
+  }
+}
+@media only screen and (max-width: 767px)  {
+  .profil-navigatior{
+    margin-bottom: 10px;
+  }
+  .nav-tabs li{
+    width: 100%;
+  }
+  .navbar-brand{
+    margin-bottom: 20px;
+  }
+  .news-type-title{
+    padding-left: 15px !important;
+  }
+  .news-block{
+    margin-left: 10px;
+  }
+  .navbar-left-nav li a{
+    line-height: 40px !important;
+    height: 40px !important;
+  }
+  .navbar-nav{
+    margin-left: 0px !important;
+    z-index: 1000;
+  }
+  .navbar-destek-elave-et{
+    a{
+      margin: 0 0 10px 0 !important;
+
+    }
+  }
+  .navbar-istek-elave-et{
+    a{
+      margin: 0 0 10px 0 !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 992px)  {
+  .navbar-nav{
+    margin-left: 0px !important;
+    a{
+      font-size: 13px !important;
+    }
+  }
+}
+
+
+// PROFIL PAGE
+@media only screen and (max-width: 1199px)  {
+.profil-avatar{
+    img{
+      height: 156px !important;
+      width: 156px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 991px)  {
+.profil-avatar{
+    img{
+      height: 120px !important;
+      width: 120px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px)  {
+.profil-avatar{
+    img{
+      height: 240px !important;
+      width: 240px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 612px)  {
+.profil-avatar{
+    img{
+      height: 200px !important;
+      width: 200px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 468px)  {
+.profil-avatar{
+    img{
+      height: 156px !important;
+      width: 156px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 430px)  {
+.profil-avatar{
+    img{
+      height: 100px !important;
+      width: 100px !important;
+    }
+  }
+}

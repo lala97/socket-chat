@@ -1,0 +1,319 @@
+#contact{
+  height: 30px;
+  line-height: 30px;
+  background-color: $main-bg-color;
+  color: $contact-text-color;
+
+// Social iconlar hissəsi
+  .contact-social{
+    a{
+      color: $contact-text-color;
+      padding: 12px;
+      text-decoration: none;
+      transition: all .3s ease;
+      &:hover{
+        color: #FFF;
+      }
+      i.fa-facebook{
+        width: 10px;
+      }
+      i{
+        width: 15px;
+      }
+    }
+
+    li{
+      //border-left: 1px solid #535D63;
+      transition: all .3s ease;
+      margin-left: -4px;
+      padding: 0px;
+      &:last-child{
+        border-left: 1px solid #535D63;
+      }
+      // Facebook
+      &:first-child:hover{
+        background-color: #3B5998;
+      }
+      // Twitter
+      &:nth-child(2):hover{
+        background-color: #00ACEE;
+      }
+      // Google +
+      &:nth-child(3):hover{
+        background-color: #DD4B39;
+      }
+    }
+  }
+// Social iconlar hissəsi bitdi.
+
+// Auth hissəsi
+  .contact-auth{
+    i{
+      height: 15px;
+      width: 15px;
+    }
+    span.badge{
+      background-color: $common-blue-color;
+      margin-left: 3px;
+      margin-right: 3px;
+    }
+    span.badge-istek{
+      background-color: $istek-color;
+    }
+    span.badge-destek{
+      background-color: $destek-color;
+    }
+    span.contact-auth-notification-number{
+      padding-left: 5px;
+      padding-right: 5px;
+      border-radius: 100%;
+      position: relative;
+      top: -5px;
+      right: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      background-color: $common-blue-color;
+    }
+    a{
+      color: $contact-text-color;
+      padding: 10px;
+      text-decoration: none;
+      transition: all .3s ease;
+      outline: none;
+      &:hover{
+        color: #FFF;
+      }
+    }
+
+    li{
+      //border-left: 1px solid #535D63;
+      &:last-child{
+        //border-right: 1px solid #535D63;
+      }
+    }
+  }
+  // Auth hissəsi bitdi
+
+  // Login modalı
+  #contact-login-modal{
+    color: $text-color;
+
+    .modal-header{
+      border: 0;
+      background-color: #F7F7F7;
+    }
+
+    .modal-content{
+      border-radius: 0px;
+      box-shadow: none;
+    }
+
+    .modal-body{
+      // Facebookla daxil ol buttonu
+      .contact-auth-facebook{
+        background-color: #3B5998;
+        width: 100%;
+        height: 40px;
+        font-size: 14px;
+        font-weight: 700;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        transition: all .3s ease;
+        &:hover{
+          background-color: #324b81;
+        }
+        a{
+          line-height: 40px;
+          text-decoration: none;
+          color: white;
+          padding: 20px;
+        }
+        i{
+          padding-right: 30px;
+          font-size: 18px;
+        }
+      }
+
+      // Google-la daxil ol buttonu
+      .contact-auth-google{
+        background-color: #DD4B39;
+        width: 100%;
+        height: 40px;
+        font-size: 14px;
+        font-weight: 700;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        transition: all .3s ease;
+        &:hover{
+          background-color: #c43421;
+        }
+        a{
+          line-height: 40px;
+          text-decoration: none;
+          color: white;
+          padding: 20px;
+        }
+        i{
+          padding-right: 15px;
+          font-size: 18px;
+        }
+      }
+
+      // Üzv deyilsiniz ? hissəsi
+      h6{
+        a{
+          font-weight: 700;
+          color: #494949;
+          text-decoration: none;
+          transition: all .3s ease;
+          &:hover{
+            color: black;
+          }
+        }
+      }
+
+      // YA DA Hissəsi
+      .contact-auth-or{
+        margin-top: -20px;
+        border-bottom: 1px solid #CCCCCC;
+        span{
+          position: relative;
+          top: 15px;
+          background-color: white;
+          color: #666679;
+          font-weight: 700;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+      // Daxil ol forum hissəsi
+      .contact-login-form{
+        margin-top: 25px;
+        input[type='email'] , input[type='password']{
+          border-radius: 0;
+          padding: 6px;
+          font-size: 12px;
+          transition: all .3s ease;
+          &:focus{
+            border: 1px solid $common-blue-color;
+            box-shadow: none;
+          }
+        }
+
+        input[type='submit']{
+          border-radius: 0;
+          margin-bottom: 30px;
+          transition: all .3s ease;
+          &:hover{
+            background-color: #E8EFF4;
+          }
+        }
+        span{
+          border-radius: 0;
+          border-right: none;
+          background-color: white;
+        }
+        .input-group{
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+
+  .contact-profil-menu{
+    border-radius: 0;
+    border: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: $main-bg-color;
+    left: -9px;
+    a{
+      color: white;
+      i{
+        padding-right: 5px;
+      }
+      &:hover{
+        color: $main-bg-color;
+        background-color: white;
+      }
+    }
+    li:first-child{
+        a:hover{
+        background: none;
+      }
+    }
+    img{
+      height: 100px;
+      width: 100px;
+      border-radius: 100%;
+      object-fit: cover;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .contact-auth-notification{
+    width: 290px;
+    left: -91px;
+    border-radius: 0;
+    border: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: $main-bg-color;
+    li{
+      padding: 0;
+      &:first-child{
+        margin-top: 0;
+      }
+      &:last-child{
+        a{
+          margin-bottom: 5px;
+        }
+      }
+    }
+    a{
+      white-space: normal;
+      margin: 0 5px  5px;
+      background-color: #475e6c;
+      overflow: auto;
+      p{
+        word-spacing: 1px;
+      }
+      img{
+        height: 40px;
+        width: 40px;
+        object-fit: cover;
+        display: inline-block;
+        border-radius: 100%;
+        margin-right: 5px;
+      }
+      color: white;
+      i{
+        padding-right: 5px;
+      }
+      &:hover{
+        color: $main-bg-color;
+        background-color: white;
+      }
+
+    }
+    .notification-seen{
+      color: white ;
+      background-color:$main-bg-color;
+
+      &:hover{
+        color: $main-bg-color;
+        background-color: white;
+      }
+    }
+    .notification-time{
+      font-size: 10px;
+      font-style: italic;
+    }
+  }
+}
