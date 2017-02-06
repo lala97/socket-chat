@@ -7,8 +7,8 @@ var PORT = process.env.PORT || 3000;
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'root',
-    database: 'final'
+    password: '',
+    database: 'bumerang'
   });
 connection.connect(function (err) {
     if (err){
