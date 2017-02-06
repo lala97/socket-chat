@@ -7,8 +7,8 @@ var PORT = process.env.PORT || 3000;
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
-    database: 'final_project'
+    password: 'root',
+    database: 'final'
   });
 connection.connect(function (err) {
     if (err){
@@ -24,9 +24,13 @@ server.listen(PORT, function() {
 // Connection
 io.on('connection', function(socket){
   socket.on('send_message', function(data){
-      connection.query('INSERT INTO chats SET?',data,function (err) {
+    if (data.message != '') {
+      connection.query('INSERT INTO chats SET?',[data],function (err) {
           if (err) throw err;
       });
+    }else {
+      console.log('Mesaj boş ola bilməz');
+    }
       connection.query("SELECT * FROM chats",function (err,result) {
           if (err) throw err;
           io.emit('all_data',result);
