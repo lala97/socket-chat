@@ -136,7 +136,7 @@
         </form>
     </div>
   </div>
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         var socket = io(':3000');
         var data = {
             sender_id :{{Auth::user()->id}},
@@ -151,16 +151,19 @@
                 $('#messages').text('');
                 $.each(result,function (key,value) {
                     $('#messages').append($('<li>').text(value.message));
-                })
+                });
             });
             return false;
         });
+
         socket.on('all_data', function(result){
             $('#messages').text('');
             $.each(result,function (key,value) {
                 $('#messages').append($('<li>').text(value.message));
             })
         });
-    </script>
+
+
+    </script> --}}
 </section>
 @endsection
