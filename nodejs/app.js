@@ -37,7 +37,7 @@ io.on('connection', function(socket){
       });
   });
 
-  socket.on('data', function(result) {
+     socket.on('data', function(result) {
     connection.query("SELECT * FROM chats WHERE sender_id=" + result.sender_id, function (err,result) {
         if (err) throw err;
         io.emit('all_data',result);
