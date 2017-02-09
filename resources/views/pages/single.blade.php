@@ -130,5 +130,34 @@
       </div>
     </div>
   </div>
+    {{-- <script type="text/javascript">
+        var socket = io(':3000');
+        var data = {
+            sender_id :{{Auth::user()->id}},
+            receiver_id: {{$single->user->id}},
+            message :  ""
+        };
+        $('form').submit(function(){
+            data.message = $('#m').val();
+            socket.emit('send_message', data);
+            $('#m').val("");
+            socket.on('all_data', function(result){
+                $('#messages').text('');
+                $.each(result,function (key,value) {
+                    $('#messages').append($('<li>').text(value.message));
+                });
+            });
+            return false;
+        });
+
+        socket.on('all_data', function(result){
+            $('#messages').text('');
+            $.each(result,function (key,value) {
+                $('#messages').append($('<li>').text(value.message));
+            })
+        });
+
+
+    </script> --}}
 </section>
 @endsection

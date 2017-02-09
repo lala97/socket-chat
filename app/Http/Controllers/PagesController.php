@@ -15,6 +15,7 @@ use Session;
 use Mail;
 use App\Qarsiliq;
 use App\Photo;
+use App\Chat;
 
 class PagesController extends Controller
 {
@@ -153,16 +154,22 @@ class PagesController extends Controller
 
     //<================= METHHOD FOR NOTIFICATION COUNT ================>
 
-      public function notification_count(Request $request,Qarsiliq $qarsiliq,$id)
+      public function notification_count(Request $request,Qarsiliq $qarsiliq,Chat $chat ,$id)
       {   Session::flash('description_destek' , "Dəstəyiniz uğurla  göndərildi. Qəbul olunduğu zaman sizə bildiriş göndəriləcək ");
           Session::flash('description_istek' , "İstəyiniz uğurla  göndərildi. Qəbul olunduğu zaman sizə bildiriş göndəriləcək ");
-
+          $elan=  Elan::find($id);
+          
           $qarsiliq->elan_id = $id;
           $qarsiliq->user_id = Auth::user()->id;
           $qarsiliq->description = $request->description;
           $qarsiliq->notification =1;
           $qarsiliq->status =1;
           $qarsiliq->save();
+          $chat->sender_id= Auth::user()->id;
+          $chat->receiver_id = $elan->user->id;
+          $chat->message = $request->description;
+          $chat->seen = 0;
+          $chat->save();
           return back();
       }
 
