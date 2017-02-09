@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Qarsiliq extends Model
 {
-    public function user($value='')
+    public function user()
     {
        return $this->belongsTo('App\User');
     }
