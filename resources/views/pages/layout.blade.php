@@ -84,6 +84,13 @@ use App\Qarsiliq;
                     ->get();
           @endphp
           <ul class="list-inline pull-right contact-auth">
+
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle socket-messages-number"><i class="fa fa-comments-o"></i> </a>
+                <ul class="dropdown-menu contact-auth-notification socket-messages" role="menu">
+                </ul>
+            </li>
+
           <li class="dropdown">
                   <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                     <i class="fa fa-bell"></i>
@@ -141,7 +148,7 @@ use App\Qarsiliq;
                               <img src="{{url('/image/'.$notification_image->avatar)}}" class="img-responsive pull-left" alt="Notification image" />
                               <p>
                                   @if($notification_image->type_id==2)
-                                    <span class="special-istek">{{$notification_image->name}}</span>  adlı istifadəçi istəyinizə dəstək vermək istəyir !
+                                    <span cl  ass="special-istek">{{$notification_image->name}}</span>  adlı istifadəçi istəyinizə dəstək vermək istəyir !
                                   @endif
                                   @if($notification_image->type_id==1)
                                     <span class="special-destek">{{$notification_image->name}}</span>  adlı istifadəçi dəstəyinizdən yararlanmaq istəyir !
@@ -252,7 +259,7 @@ use App\Qarsiliq;
                 <div class="col-lg-12 padding0 contact-login-form">
                   <form id="SubmitLogin" class="ModalLogin" action="" method="POST">
                     {{csrf_field()}}
-                    <strong id="EmailError" class="text-danger"></strong>
+                    <strong id="EmailError" class="text-dang  er"></strong>
                     <div id="EmailGroup" class="input-group">
                       <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                       <input id="email" type="email" name="email" class="form-control email-placeholder-change">
@@ -322,7 +329,6 @@ use App\Qarsiliq;
 </div>
 </section>
 
-
 </body>
 
 <script src="{{url('/js/vendor/jquery-2.2.4.min.js')}}"></script>
@@ -331,5 +337,35 @@ use App\Qarsiliq;
 <script src="{{url('/js/InfoBubble.js')}}" charset="utf-8"></script>
 <script src="{{url('/js/AjaxSearchMap.js')}}" charset="utf-8"></script>
 <script src="{{url('/js/main.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
+
+<script type="text/javascript">
+    var socket = io(':3000');
+    var count = 0;
+    console.log("chat is working");
+    var data = {
+      id: {{Auth::user()->id}}
+    }
+
+    socket.emit('message_notifications', data);
+    socket.on('notifications', function(result){
+        $.each(result,function (key,value) {
+          if (value.seen == 0) {
+            count++;
+          }
+          console.log(value);
+          $('.socket-messages').append('<li><a href="#"><img src="/image/' + value.avatar + '" class="img-responsive pull-left" alt="Notification image" /><p>'+ '<span style="color:#0090D9;">' + value.name + '</span>' + ': '+ value.message +'</p></a></li>');
+        });
+
+        $('.socket-messages').append('<li><a href="#"> <h4 class="text-center margin0">Hamısına bax ></h4></a></li>');
+        if (count > 0) {
+          $('.socket-messages-number').append('<span class="contact-auth-notification-number">' + count +  '</span>');
+
+        }
+
+
+    });
+</script>
+
   @yield('scripts')
 </html>

@@ -31,10 +31,11 @@ io.on('connection', function(socket){
     }else {
       console.log('Mesaj boş ola bilməz');
     }
-      connection.query("SELECT * FROM chats WHERE sender_id=" + data.sender_id,function (err,result) {
-          if (err) throw err;
-          io.emit('all_data',result);
-      });
+
+    connection.query("SELECT * FROM chats WHERE sender_id=" + data.sender_id,function (err,result) {
+        if (err) throw err;
+        io.emit('all_data',result);
+    });
   });
 
   socket.on('data', function(result) {
@@ -44,5 +45,21 @@ io.on('connection', function(socket){
     });
   });
 
-
+  socket.on('message_notifications', function(result) {
+    connection.query(
+    "SELECT " +
+    "chats.sender_id, chats.receiver_id, chats.message, users.name, users.avatar, chats.seen " +
+    "FROM " +
+    "chats " +
+    "INNER JOIN " +
+    "users " +
+    "ON " +
+    "chats.sender_id = users.id " +
+    "WHERE " +
+    "chats.receiver_id = "+ result.id,
+    function (err,result) {
+        if (err) throw err;
+        io.emit('notifications',result);
+    });
+  });
 });
