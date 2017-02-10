@@ -230,7 +230,6 @@
 
           <div id="profil-messages" class="tab-pane fade in {{Request::is('Mesajlar') ? " active" : ''}}">
 
-          </div>
           {{-- <================== MESSAGES PART END ==================> --}}
 
           {{-- <================== MESSAGE PART  ==================> --}}

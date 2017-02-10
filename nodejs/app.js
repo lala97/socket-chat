@@ -25,6 +25,7 @@ server.listen(PORT, function() {
 io.on('connection', function(socket){
   socket.on('send_message', function(data){
     if (data.message != '') {
+        console.log(data);
       connection.query('INSERT INTO chats SET?',[data],function (err) {
           if (err) throw err;
           io.emit('only_one_data',data);
@@ -65,7 +66,7 @@ io.on('connection', function(socket){
       if(result.id !=0) {
           var query = connection.query(
               "SELECT " +
-              "chats.sender_id, chats.receiver_id, chats.message, users.name, users.avatar, chats.seen " +
+              "chats.sender_id, chats.receiver_id,chats.id, chats.message, users.name, users.avatar, chats.seen " +
               "FROM " +
               "chats " +
               "INNER JOIN " +
