@@ -86,7 +86,7 @@ use App\Qarsiliq;
 
             <li class="dropdown">
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle socket-messages-number"> </a>
-                <ul class="dropdown-menu contact-auth-notification socket-messages" role="menu">
+                <ul class="dropdown-menu contact-auth-notification socket-messages-data" role="menu">
                 </ul>
             </li>
 
@@ -353,7 +353,7 @@ use App\Qarsiliq;
     socket.emit('message_notifications', data);
     socket.on('notifications', function(message_notification_data){
         $('.socket-messages').text('');
-        if($id != 0){
+        if({{$id}} != 0){
           $.each(message_notification_data,function (key,value){
             if (value.seen == 0) {
               count++;
@@ -366,7 +366,6 @@ use App\Qarsiliq;
           });
         }else{
           count = 0;
-          $('.socket-messages').append('MESAJ YOXDUR');
         }
 //        $('.socket-messages').append('<li><a href="#"> <h4 class="text-center margin0">Hamısına bax ></h4></a></li>');
         if (count > 0) {
@@ -374,6 +373,7 @@ use App\Qarsiliq;
           $('.socket-messages-count span').text(count);
         }else{
           $('.socket-messages-number').append('<a href="#" data-toggle="dropdown" class="dropdown-toggle socket-messages-count"><i class="fa fa-comments-o"></i></a>');
+          $('.socket-messages-data').append('<li><a href="#"> <h4 class="text-center margin0">Hamısına bax ></h4></a></li>');
         }
     });
 </script>
