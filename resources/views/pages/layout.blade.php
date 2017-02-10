@@ -51,7 +51,6 @@ use App\Qarsiliq;
                        ])
                        ->get();
                       //  dd($noti);
-
       $noti_qars_user=Elan::join('users', 'users.id', '=', 'els.user_id')
               ->join('qarsiliqs', 'qarsiliqs.elan_id', '=', 'els.id')
               ->select('els.type_id','users.name','users.avatar','qarsiliqs.notification','qarsiliqs.user_id','qarsiliqs.id','qarsiliqs.status','qarsiliqs.data')
@@ -71,7 +70,6 @@ use App\Qarsiliq;
                 ->orWhere('qarsiliqs.user_id', '=', Auth::user()->id)
               ->take(3)
                ->get();
-
                $data_join=Qarsiliq::join('els', 'els.id', '=', 'qarsiliqs.elan_id')
                     ->join('users', 'users.id', '=', 'els.user_id')
                     ->select('users.name','els.type_id','users.email','users.city','qarsiliqs.id','users.avatar','qarsiliqs.data_status','qarsiliqs.created_at')
@@ -87,7 +85,7 @@ use App\Qarsiliq;
           <ul class="list-inline pull-right contact-auth">
 
             <li class="dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle socket-messages-number"><i class="fa fa-comments-o"></i> </a>
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle socket-messages-number"> </a>
                 <ul class="dropdown-menu contact-auth-notification socket-messages" role="menu">
                 </ul>
             </li>
@@ -353,27 +351,30 @@ use App\Qarsiliq;
       id: {{$id}}
     }
     socket.emit('message_notifications', data);
-    $('.socket-messages-number').append("<span class='contact-auth-notification-number'></span>");
     socket.on('notifications', function(message_notification_data){
         $('.socket-messages').text('');
-        $.each(message_notification_data,function (key,value){
-          if (value.seen == 0) {
-            count++;
-          }
-          $('.socket-messages').append(
-              '<li>' +
-              '<a href="#">' +
-              '<img src="/image/' + value.avatar + '" class="img-responsive pull-left" alt="Notification image" />' +
-              '<p>'+ '<span style="color:#0090D9;">' + value.name + '</span>' + ': '+ value.message +'</p></a></li>');
-        });
-
+        if($id != 0){
+          $.each(message_notification_data,function (key,value){
+            if (value.seen == 0) {
+              count++;
+            }
+            $('.socket-messages').append(
+                '<li>' +
+                '<a href="#">' +
+                '<img src="/image/' + value.avatar + '" class="img-responsive pull-left" alt="Notification image" />' +
+                '<p>'+ '<span style="color:#0090D9;">' + value.name + '</span>' + ': '+ value.message +'</p></a></li>');
+          });
+        }else{
+          count = 0;
+          $('.socket-messages').append('MESAJ YOXDUR');
+        }
 //        $('.socket-messages').append('<li><a href="#"> <h4 class="text-center margin0">Hamısına bax ></h4></a></li>');
         if (count > 0) {
-          $('.contact-auth-notification-number').text(count);
-
+          $('.socket-messages-number').append('<a href="#" data-toggle="dropdown" class="dropdown-toggle socket-messages-count"><i class="fa fa-comments-o"></i> <span class="contact-auth-notification-number"> </span> </a>');
+          $('.socket-messages-count span').text(count);
+        }else{
+          $('.socket-messages-number').append('<a href="#" data-toggle="dropdown" class="dropdown-toggle socket-messages-count"><i class="fa fa-comments-o"></i></a>');
         }
-
-
     });
 </script>
 
