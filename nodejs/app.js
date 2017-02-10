@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'bumerang'
+    database: 'final_project'
   });
 connection.connect(function (err) {
     if (err){
@@ -18,7 +18,7 @@ connection.connect(function (err) {
 
 
 server.listen(PORT, function() {
-  console.log("Serverm port: 3000");
+  console.log("Server port: 3000");
 });
 
 // Connection
@@ -27,39 +27,62 @@ io.on('connection', function(socket){
     if (data.message != '') {
       connection.query('INSERT INTO chats SET?',[data],function (err) {
           if (err) throw err;
+          io.emit('only_one_data',data);
       });
     }else {
       console.log('Mesaj boş ola bilməz');
     }
-
-    connection.query("SELECT * FROM chats WHERE sender_id=" + data.sender_id,function (err,result) {
-        if (err) throw err;
-        io.emit('all_data',result);
-    });
+      connection.query(
+          "SELECT " +
+          "chats.message, chats.sender_id, chats.receiver_id, users.name, users.avatar " +
+          "FROM " +
+          "`chats` " +
+          "INNER JOIN " +
+          "`users` " +
+          "ON " +
+          "chats.sender_id = users.id",
+          function (err,data) {
+          if (err) throw err;
+          io.emit('all_data',data);
+      });
   });
-
      socket.on('data', function(result) {
-    connection.query("SELECT * FROM chats WHERE sender_id=" + result.sender_id, function (err,result) {
+    connection.query(
+        "SELECT " +
+        "chats.message, chats.sender_id, chats.receiver_id, users.name, users.avatar " +
+        "FROM " +
+        "`chats` " +
+        "INNER JOIN " +
+        "`users` " +
+        "ON chats.sender_id = users.id",
+        function (err,data) {
         if (err) throw err;
-        io.emit('all_data',result);
+        io.emit('all_data',data);
     });
   });
 
   socket.on('message_notifications', function(result) {
-    connection.query(
-    "SELECT " +
-    "chats.sender_id, chats.receiver_id, chats.message, users.name, users.avatar, chats.seen " +
-    "FROM " +
-    "chats " +
-    "INNER JOIN " +
-    "users " +
-    "ON " +
-    "chats.sender_id = users.id " +
-    "WHERE " +
-    "chats.receiver_id = "+ result.id,
-    function (err,result) {
-        if (err) throw err;
-        io.emit('notifications',result);
-    });
+      if(result.id !=0) {
+          var query = connection.query(
+              "SELECT " +
+              "chats.sender_id, chats.receiver_id, chats.message, users.name, users.avatar, chats.seen " +
+              "FROM " +
+              "chats " +
+              "INNER JOIN " +
+              "users " +
+              "ON " +
+              "chats.sender_id = users.id " +
+              "WHERE " +
+              "chats.receiver_id = " + connection.escape(result.id)+
+              " ORDER BY " +
+              "chats.id DESC",
+              function (err, message_notification_data) {
+                  if (err) throw err;
+                  io.emit('notifications', message_notification_data);
+              });
+          console.log(query.sql);
+      }else{
+          io.emit('notifications', result);
+      }
   });
 });

@@ -39,6 +39,7 @@ use App\Qarsiliq;
             <li class="list-item"><a href="#" data-toggle="modal" data-target="#contact-login-modal"><i class="fa fa-user"></i> Daxil ol</a></li>
             <li class="list-item"><a href="{{url('/Qeydiyyat')}}"><i class="fa fa-user-plus"></i> Qeydiyyat</a></li>
           </ul>
+
         @else
           @php
           $noti = Elan::join('users', 'users.id', '=', 'els.user_id')
@@ -328,7 +329,13 @@ use App\Qarsiliq;
   </div>
 </div>
 </section>
-
+    @php
+    if (Auth::user()){
+        $id = Auth::user()->id;
+    }else{
+        $id = 0;
+    }
+    @endphp
 </body>
 
 <script src="{{url('/js/vendor/jquery-2.2.4.min.js')}}"></script>
@@ -342,24 +349,27 @@ use App\Qarsiliq;
 <script type="text/javascript">
     var socket = io(':3000');
     var count = 0;
-    console.log("chat is working");
     var data = {
-      id: {{Auth::user()->id}}
+      id: {{$id}}
     }
-
     socket.emit('message_notifications', data);
-    socket.on('notifications', function(result){
-        $.each(result,function (key,value) {
+    $('.socket-messages-number').append("<span class='contact-auth-notification-number'></span>");
+    socket.on('notifications', function(message_notification_data){
+        $('.socket-messages').text('');
+        $.each(message_notification_data,function (key,value){
           if (value.seen == 0) {
             count++;
           }
-          console.log(value);
-          $('.socket-messages').append('<li><a href="#"><img src="/image/' + value.avatar + '" class="img-responsive pull-left" alt="Notification image" /><p>'+ '<span style="color:#0090D9;">' + value.name + '</span>' + ': '+ value.message +'</p></a></li>');
+          $('.socket-messages').append(
+              '<li>' +
+              '<a href="#">' +
+              '<img src="/image/' + value.avatar + '" class="img-responsive pull-left" alt="Notification image" />' +
+              '<p>'+ '<span style="color:#0090D9;">' + value.name + '</span>' + ': '+ value.message +'</p></a></li>');
         });
 
-        $('.socket-messages').append('<li><a href="#"> <h4 class="text-center margin0">Hamısına bax ></h4></a></li>');
+//        $('.socket-messages').append('<li><a href="#"> <h4 class="text-center margin0">Hamısına bax ></h4></a></li>');
         if (count > 0) {
-          $('.socket-messages-number').append('<span class="contact-auth-notification-number">' + count +  '</span>');
+          $('.contact-auth-notification-number').text(count);
 
         }
 

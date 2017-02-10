@@ -123,41 +123,4 @@
             @endif
           </div>
         @endif
-          <script
-                  src="https://code.jquery.com/jquery-2.2.4.min.js"
-                  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-                  crossorigin="anonymous"></script>
-      </div>
-    </div>
-  </div>
-    {{-- <script type="text/javascript">
-        var socket = io(':3000');
-        var data = {
-            sender_id :{{Auth::user()->id}},
-            receiver_id: {{$single->user->id}},
-            message :  ""
-        };
-        $('form').submit(function(){
-            data.message = $('#m').val();
-            socket.emit('send_message', data);
-            $('#m').val("");
-            socket.on('all_data', function(result){
-                $('#messages').text('');
-                $.each(result,function (key,value) {
-                    $('#messages').append($('<li>').text(value.message));
-                });
-            });
-            return false;
-        });
-
-        socket.on('all_data', function(result){
-            $('#messages').text('');
-            $.each(result,function (key,value) {
-                $('#messages').append($('<li>').text(value.message));
-            })
-        });
-
-
-    </script> --}}
-</section>
 @endsection
