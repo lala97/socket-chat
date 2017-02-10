@@ -52,6 +52,8 @@
           <h5 class="header-name"> {{$notication_single->name}}</h5>
         </div>
         <div class="chat-body">
+            <ul class="list-group body-message list-unstyled">
+            </ul>
         </div>
 
         <div class="chat-footer">
@@ -85,34 +87,22 @@
               $('.footer-input').val("");
               $('.chat-body').text('');
               socket.on('all_data',function (allData) {
-                  $('.chat-body').text('');
+                  $('.chat- ul').text('');
                   $.each(allData,function (key,value) {
                       if (value.sender_id == {{Auth::user()->id}}){
-                          $('.chat-body').append(
-                              '<div class="body-message pull-right">' +
-                              '<div class="col-lg-12">'+
-                              '<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 padding0">' +
+                          $('.body-message').append(
+                              '<li class="pull-right">' +
                               '<p class="message-content">'+value.message+'</p>'+
-                              '</div>'+
-                              '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 padding0">' +
-                              '<img src="/image/'+value.avatar+'" class="message-img pull-right" alt="user-image">'+
-                              '</div>'+
-                              '</div>'+
-                              '</div>'+
+                              '<img src="/image/'+value.avatar+'" class="message-img" alt="user-image">'+
+                              '</li>'+
                               '<div class="clearfix"></div>'
                           );
                       }else if (value.sender_id == {{$notication_single->user->id}} && value.receiver_id == {{Auth::user()->id}}){
-                          $('.chat-body').append(
-                              '<div class="body-message pull-left">' +
-                              '<div class="col-lg-12">'+
-                              '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 padding0">' +
-                              '<img src="/image/'+value.avatar+'" class="message-img pull-right" alt="user-image">'+
-                              '</div>'+
-                              '<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 padding0">' +
+                          $('.body-message').append(
+                              '<li class="pull-right">' +
                               '<p class="message-content">'+value.message+'</p>'+
-                              '</div>'+
-                              '</div>'+
-                              '</div>'+
+                              '<img src="/image/'+value.avatar+'" class="message-img" alt="user-image">'+
+                              '</li>'+
                               '<div class="clearfix"></div>'
                           );
                       }
@@ -121,34 +111,22 @@
               return false;
           });
           socket.on('all_data',function (allData) {
-              $('.chat-body').text('');
+              $('.chat-body ul').text('');
               $.each(allData,function (key,value) {
                   if (value.sender_id == {{Auth::user()->id}}){
-                      $('.chat-body').append(
-                          '<div class="body-message pull-right">' +
-                          '<div class="col-lg-12">'+
-                            '<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 padding0">' +
-                                '<p class="message-content">'+value.message+'</p>'+
-                            '</div>'+
-                              '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 padding0">' +
-                                    '<img src="/image/'+value.avatar+'" class="message-img pull-right" alt="user-image">'+
-                                '</div>'+
-                          '</div>'+
-                          '</div>'+
-                              '<div class="clearfix"></div>'
+                      $('.body-message').append(
+                          '<li class="pull-right">' +
+                            '<p class="message-content">'+value.message+'</p>'+
+                            '<img src="/image/'+value.avatar+'" class="message-img" alt="user-image">'+
+                          '</li>'+
+                          '<div class="clearfix"></div>'
                       );
                   }else if (value.sender_id == {{$notication_single->user->id}} && value.receiver_id == {{Auth::user()->id}}){
-                      $('.chat-body').append(
-                          '<div class="body-message pull-left">' +
-                          '<div class="col-lg-12">'+
-                          '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 padding0">' +
-                          '<img src="/image/'+value.avatar+'" class="message-img pull-right" alt="user-image">'+
-                          '</div>'+
-                          '<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 padding0">' +
-                          '<p class="message-content">'+value.message+'</p>'+
-                          '</div>'+
-                          '</div>'+
-                          '</div>'+
+                      $('.chat-body ul').append(
+                          '<li class="pull-left">' +
+                            '<img src="/image/'+value.avatar+'" class="message-img" alt="user-image">'+
+                            '<p class="message-content">'+value.message+'</p>'+
+                          '</li>'+
                           '<div class="clearfix"></div>'
                       );
                   }

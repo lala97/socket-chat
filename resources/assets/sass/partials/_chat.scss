@@ -2,7 +2,7 @@
   margin: 50px auto;
   background-color: $chat-bg-color;
   height: 500px;
-  max-width: 500px;
+  max-width: 550px;
   position: relative;
 
   .chat-header{
@@ -38,19 +38,23 @@
     height: 420px;
     .body-message{
       margin-top: 10px;
-      margin-left: 5px;
+      margin-left: 0;
+      width: 100%;
       .message-content{
         background-color: #DBDBDB;
         max-width: 220px;
         margin: 0px;
         padding: 10px;
+        display: inline-block;
         word-break: all;
       }
       .message-img{
-        height: 50px;
-        width: 50px;
+        margin: 5px;
+        height: 60px;
+        width: 60px;
         border-radius: 100%;
         object-fit: cover;
+        vertical-align: super;
       }
     }
   }

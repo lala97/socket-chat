@@ -32,18 +32,57 @@ io.on('connection', function(socket){
     }else {
       console.log('Mesaj boş ola bilməz');
     }
-      connection.query("SELECT chats.message, chats.sender_id, chats.receiver_id, users.name, users.avatar FROM `chats` INNER JOIN `users` ON chats.sender_id = users.id", function (err,data) {
+      connection.query(
+          "SELECT " +
+          "chats.message, chats.sender_id, chats.receiver_id, users.name, users.avatar " +
+          "FROM " +
+          "`chats` " +
+          "INNER JOIN " +
+          "`users` " +
+          "ON " +
+          "chats.sender_id = users.id",
+          function (err,data) {
           if (err) throw err;
           io.emit('all_data',data);
       });
   });
-
      socket.on('data', function(result) {
-    connection.query("SELECT chats.message, chats.sender_id, chats.receiver_id, users.name, users.avatar FROM `chats` INNER JOIN `users` ON chats.sender_id = users.id", function (err,data) {
+    connection.query(
+        "SELECT " +
+        "chats.message, chats.sender_id, chats.receiver_id, users.name, users.avatar " +
+        "FROM " +
+        "`chats` " +
+        "INNER JOIN " +
+        "`users` " +
+        "ON chats.sender_id = users.id",
+        function (err,data) {
         if (err) throw err;
         io.emit('all_data',data);
     });
   });
 
-
+  socket.on('message_notifications', function(result) {
+      if(result.id !=0) {
+          var query = connection.query(
+              "SELECT " +
+              "chats.sender_id, chats.receiver_id, chats.message, users.name, users.avatar, chats.seen " +
+              "FROM " +
+              "chats " +
+              "INNER JOIN " +
+              "users " +
+              "ON " +
+              "chats.sender_id = users.id " +
+              "WHERE " +
+              "chats.receiver_id = " + connection.escape(result.id)+
+              " ORDER BY " +
+              "chats.id DESC",
+              function (err, message_notification_data) {
+                  if (err) throw err;
+                  io.emit('notifications', message_notification_data);
+              });
+          console.log(query.sql);
+      }else{
+          io.emit('notifications', result);
+      }
+  });
 });

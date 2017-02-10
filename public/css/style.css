@@ -9354,7 +9354,7 @@ form span {
   margin: 50px auto;
   background-color: #F3F3F3;
   height: 500px;
-  max-width: 500px;
+  max-width: 550px;
   position: relative; }
   #chat .chat-header {
     width: 100%;
@@ -9379,18 +9379,22 @@ form span {
     height: 420px; }
     #chat .chat-body .body-message {
       margin-top: 10px;
-      margin-left: 5px; }
+      margin-left: 0;
+      width: 100%; }
       #chat .chat-body .body-message .message-content {
         background-color: #DBDBDB;
         max-width: 220px;
         margin: 0px;
         padding: 10px;
+        display: inline-block;
         word-break: all; }
       #chat .chat-body .body-message .message-img {
-        height: 50px;
-        width: 50px;
+        margin: 5px;
+        height: 60px;
+        width: 60px;
         border-radius: 100%;
-        object-fit: cover; }
+        object-fit: cover;
+        vertical-align: super; }
   #chat .chat-footer {
     width: 100%;
     position: absolute;
