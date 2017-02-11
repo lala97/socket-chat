@@ -4,6 +4,11 @@
   background-color: $main-bg-color;
   color: $contact-text-color;
 
+  .socket-messages-data{
+    height: 325px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 // Social iconlar hissəsi
   .contact-social{
     a{
