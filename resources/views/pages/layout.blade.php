@@ -351,13 +351,15 @@ use App\Qarsiliq;
       id: {{$id}}
     }
     socket.emit('message_notifications', data);
-    $('.socket-messages-data').text('');
     socket.on('notifications', function(message_notification_data){
         if({{$id}} != 0){
+          $('.socket-messages-data').empty();
+          count=0 ;
             $.each(message_notification_data,function (key,value){
             if (value.seen == 0) {
               count++;
             }
+
             $('.socket-messages-data').append(
                 '<li>' +
                 '<a href="/Mesajlar/'+value.id+'">' +
