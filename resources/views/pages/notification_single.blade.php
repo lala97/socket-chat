@@ -16,56 +16,60 @@
     @if(isset($notication_single->id))
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <img src="{{url('/image/'.$notication_single->avatar)}}" alt="">
-          </div>
-          <div class="col-lg-9 col-md-8 col-sm-6 col-xs-12">
-            <h3 class="not-single-title">
-              @if($notication_single->type_id==2)
-                <span class="special-istek">{{$notication_single->name}}</span> adlı istifadəçi istəyinizə dəstək vermək istəyir !
-              @elseif($notication_single->type_id==1)
-                <span class="special-destek">{{$notication_single->name}}</span> adlı istifadəçi dəstəyinizdən yararlanmaq istəyir !
-              @endif
-            </h3>
-            <h4 class="not-single-desc">{{$notication_single->description}}</h4>
-            @if($notication_single->notification==0)
-              <div class="alert alert-danger" role="alert">
-                @if($notication_single->type_id==1)
-                  Bu istək imtina edilib !
-                @elseif($notication_single->type_id==2)
-                  Bu dəstək imtina edilib !
+          <div class="col-lg-6">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+              <img src="{{url('/image/'.$notication_single->avatar)}}" alt="">
+            </div>
+            <div class="col-lg-9 col-md-8 col-sm-6 col-xs-12">
+              <h3 class="not-single-title">
+                @if($notication_single->type_id==2)
+                  <span class="special-istek">{{$notication_single->name}}</span> adlı istifadəçi istəyinizə dəstək vermək istəyir !
+                @elseif($notication_single->type_id==1)
+                  <span class="special-destek">{{$notication_single->name}}</span> adlı istifadəçi dəstəyinizdən yararlanmaq istəyir !
                 @endif
-              </div>
-            @elseif($notication_single->data==0)
-              <p class="pull-right">
-                <a href="{{url('/accept/'.$notication_single->id)}}" class="btn not-accept"><i class="fa fa-check"></i> Qəbul et</a>
-                <a href="{{url('/refusal/'.$notication_single->id)}}" class="btn not-deny"><i class="fa fa-times"></i> İmtina et</a>
-              </p>
-            @else
-            @endif
+              </h3>
+              <h4 class="not-single-desc">{{$notication_single->description}}</h4>
+              @if($notication_single->notification==0)
+                <div class="alert alert-danger" role="alert">
+                  @if($notication_single->type_id==1)
+                    Bu istək imtina edilib !
+                  @elseif($notication_single->type_id==2)
+                    Bu dəstək imtina edilib !
+                  @endif
+                </div>
+              @elseif($notication_single->data==0)
+                <p class="pull-right">
+                  <a href="{{url('/accept/'.$notication_single->id)}}" class="btn not-accept"><i class="fa fa-check"></i> Qəbul et</a>
+                  <a href="{{url('/refusal/'.$notication_single->id)}}" class="btn not-deny"><i class="fa fa-times"></i> İmtina et</a>
+                </p>
+              @else
+              @endif
+            </div>
           </div>
-        </div>
-      </div>
-      {{--Chat--}}
-      <div id="chat">
-        <div class="chat-header">
-          <h5 class="header-name"> {{$notication_single->name}}</h5>
-        </div>
-        <div class="chat-body">
-            <ul class="list-group body-message list-unstyled">
-            </ul>
-        </div>
+          <div class="col-lg-6">
+            {{--Chat--}}
+            <div id="chat">
+              <div class="chat-header">
+                <h5 class="header-name"> {{$notication_single->name}}</h5>
+              </div>
+              <div class="chat-body">
+                  <ul class="list-group body-message list-unstyled">
+                  </ul>
+              </div>
 
-        <div class="chat-footer">
-          <form id="notification_chat" action="" method="post">
-            <div class="col-lg-10 padding0">
-              <input type="text" class="form-control footer-input" name="" placeholder="Mesajınız">
-            </div>
+              <div class="chat-footer">
+                <form id="notification_chat" action="" method="post">
+                  <div class="col-lg-10 padding0">
+                    <input type="text" class="form-control footer-input" name="" placeholder="Mesajınız">
+                  </div>
 
-            <div class="col-lg-2 padding0">
-              <button type="submit" name="button" class="btn footer-btn"><i class="fa fa-paper-plane-o"></i></button>
+                  <div class="col-lg-2 padding0">
+                    <button type="submit" name="button" class="btn footer-btn"><i class="fa fa-paper-plane-o"></i></button>
+                  </div>
+                </form>
+              </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
       <script

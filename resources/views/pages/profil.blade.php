@@ -16,7 +16,7 @@
             <li {{Request::is('Istekler') ? "class=active" : ''}}><a data-toggle="tab" href="#profil-isteklerim">İstəklərim</a></li>
             <li {{Request::is('Destekler') ? "class=active" : ''}}><a data-toggle="tab" href="#profil-desteklerim">Dəstəklərim</a></li>
             <li {{Request::is('Bildirişlər') ? " class=active" : ''}}><a data-toggle="tab" href="#profil-notification">Bildirişlər</a></li>
-             <li {{Request::is('Mesajlar') ? " class=active" : ''}}><a data-toggle="tab" href="#profil-messages">Mesajlar</a></li>
+             {{-- <li {{Request::is('Mesajlar') ? " class=active" : ''}}><a data-toggle="tab" href="#profil-messages">Mesajlar</a></li> --}}
             <li {{Request::is('Ismarıclar') ? " class=active" : ''}}><a data-toggle="tab" href="#profil-ismariclar">Ismarıclar</a></li>
             <li {{Request::is('Tənzimləmələr') ? " class=active" : ''}}><a data-toggle="tab" href="#profil-settings">Tənzimləmələr</a></li>
           </ul>
@@ -228,7 +228,7 @@
 
           {{-- <================== MESSAGES PART==================> --}}
 
-          <div id="profil-messages" class="tab-pane fade in {{Request::is('Mesajlar') ? " active" : ''}}">
+          {{-- <div id="profil-messages" class="tab-pane fade in {{Request::is('Mesajlar') ? " active" : ''}}"> --}}
 
           {{-- <================== MESSAGES PART END ==================> --}}
 
