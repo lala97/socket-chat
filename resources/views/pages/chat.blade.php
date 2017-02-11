@@ -29,10 +29,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
     <script type="text/javascript">
         var socket = io(':3000');
+        var date = new Date();
         var data_chat = {
             sender_id :{{Auth::user()->id}},
             receiver_id: {{$chat->receiver_id}},
             message :  ""
+            created_at: date.getTime();
+            updated_at: date.getTime();
         };
         socket.emit('data',data_chat);
         $('#notification_chat').submit(function () {
