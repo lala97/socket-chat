@@ -351,16 +351,16 @@ use App\Qarsiliq;
       id: {{$id}}
     }
     socket.emit('message_notifications', data);
+    $('.socket-messages-data').text('');
     socket.on('notifications', function(message_notification_data){
-        $('.socket-messages').text('');
         if({{$id}} != 0){
-          $.each(message_notification_data,function (key,value){
+            $.each(message_notification_data,function (key,value){
             if (value.seen == 0) {
               count++;
             }
-            $('.socket-messages').append(
+            $('.socket-messages-data').append(
                 '<li>' +
-                '<a href="#">' +
+                '<a href="/Mesajlar/'+value.id+'">' +
                 '<img src="/image/' + value.avatar + '" class="img-responsive pull-left" alt="Notification image" />' +
                 '<p>'+ '<span style="color:#0090D9;">' + value.name + '</span>' + ': '+ value.message +'</p></a></li>');
           });
@@ -369,6 +369,8 @@ use App\Qarsiliq;
         }
 //        $('.socket-messages').append('<li><a href="#"> <h4 class="text-center margin0">Hamısına bax ></h4></a></li>');
         if (count > 0) {
+            $('.socket-messages-number').text('');
+            $('.socket-messages-count span').text('');
           $('.socket-messages-number').append('<a href="#" data-toggle="dropdown" class="dropdown-toggle socket-messages-count"><i class="fa fa-comments-o"></i> <span class="contact-auth-notification-number"> </span> </a>');
           $('.socket-messages-count span').text(count);
         }else{
