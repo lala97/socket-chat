@@ -34,8 +34,8 @@
             sender_id :{{Auth::user()->id}},
             receiver_id: {{$chat->receiver_id}},
             message :  ""
-            created_at: date.getTime();
-            updated_at: date.getTime();
+            created_at: date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+            updated_at: date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
         };
         socket.emit('data',data_chat);
         $('#notification_chat').submit(function () {
