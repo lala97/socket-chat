@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'final'
+    database: 'final_project'
   });
 connection.connect(function (err) {
     if (err){
@@ -86,4 +86,20 @@ io.on('connection', function(socket){
           io.emit('notifications', result);
       }
   });
+});
+
+io.on('connection',function(socket){
+  socket.on('live_update',function(result){
+      var query=connection.query(
+        "SELECT "+
+          "type_id,title,status "+
+          "FROM "+
+          "els "+
+          "WHERE status=1",
+          function(error,live_update_rows){
+            if (error) throw error;
+            io.emit('live_update_data',live_update_rows);
+          });
+          console.log(query.sql);
+  })
 });

@@ -3,6 +3,14 @@
 @section('title','Ana Səhifə')
 
 @section('content')
+  <style media="screen">
+    .div{
+      width: 400px;
+      height: 400px;
+      background-color: gray;
+      z-index: 1000
+    }
+  </style>
   <section id="map">
   <div class="container-fluid">
     <div class="row">
@@ -104,6 +112,9 @@
       <div id="InfoMap">
       </div>
     </div>
+    <div class="div">
+
+    </div>
   </div>
 </section>
 <section id="news">
@@ -180,7 +191,20 @@
     </div>
   </div>
 </section>
-
+<script
+        src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
+<script type="text/javascript">
+var socket = io(':3000');
+socket.emit('live_update');
+   socket.on('live_update_data',function(results){
+     $.each(results,function(key,value){
+       $('.div').append(value.title);
+     });
+   })
+</script>
 @endsection
 @section('scripts')
   <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
