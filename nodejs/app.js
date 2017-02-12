@@ -95,7 +95,8 @@ io.on('connection',function(socket){
           "type_id,title,status "+
           "FROM "+
           "els "+
-          "WHERE status=1",
+          "WHERE status=1 "
+          +"AND updated_at=NOW()",
           function(error,live_update_rows){
             if (error) throw error;
             io.emit('live_update_data',live_update_rows);
